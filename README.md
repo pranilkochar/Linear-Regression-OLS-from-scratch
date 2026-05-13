@@ -30,6 +30,10 @@ First, we load our dataset, sort it, and manually find the average ratio of Sala
 
 ```python
 import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.express as px
+import plotly.io as pio
+import plotly.graph_objects as go
 
 # Sample Data
 work_exp = [8, 2, 18, 1, 10, 5, 14, 3, 6, 2, 20, 9, 4, 16, 5, 1, 12, 7, 3, 10,
@@ -47,3 +51,8 @@ print('Manual Multiplier (m):', m)
 # Predicting for 50 years of experience
 x = 50
 print('Predicted Salary:', x * m)
+
+**Expected Output:**
+```text
+Predicted Salay: 772681.2931217102
+```
