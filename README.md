@@ -56,3 +56,43 @@ print('Predicted Salary:', x * m)
 ```text
 Predicted Salay: 772681.2931217102
 ```
+
+### Step 2: Visualizing Actual vs. Predicted Salary (Manual Approach)
+
+Now we will plot our actual data points against the predictions we made using our manual multiplier (`m`). This helps us visually check how well our manual model is performing. 
+
+```python
+import plotly.graph_objects as go
+
+# 1. Calculate the predicted salary using our manual multiplier (m)
+df['predicted_salary'] = df['work_exp'] * m
+
+# 2. Create an empty Plotly figure
+fig = go.Figure()
+
+# 3. Add the Actual Salary points (Scatter Plot / Dots)
+fig.add_trace(go.Scatter(
+    x=df['work_exp'],
+    y=df['salary'],
+    mode='markers',
+    name='Actual Salary'
+))
+
+# 4. Add the Predicted Salary points (Line Plot)
+fig.add_trace(go.Scatter(
+    x=df['work_exp'],
+    y=df['predicted_salary'],
+    mode='lines+markers',
+    name='Predicted Salary'
+))
+
+# 5. Add titles and format the layout
+fig.update_layout(
+    title='Actual vs Predicted Salary (Manual Tuning)',
+    xaxis_title='Work Experience (Years)',
+    yaxis_title='Salary (₹)'
+)
+
+# 6. Display the graph
+fig.show()
+
