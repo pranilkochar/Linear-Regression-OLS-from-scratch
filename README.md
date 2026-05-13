@@ -97,3 +97,14 @@ fig.update_layout(
 fig.show()
 ```
 ![Actual vs Predicted Salary (Manual)](newplot.png)
+
+**🔍 Analyzing the Output:**
+
+If you look closely at the graph above, you will notice a clear divergence between the **Actual Salary (blue dots)** and our **Predicted Salary (orange line)**. 
+
+* **The Good:** For employees with 1 to 5 years of experience, our manual multiplier does a fairly decent job of estimating the salary.
+* **The Bad:** As work experience increases, the orange line starts to heavily over-predict. By the 20-year mark, our manual model predicts a salary over ₹300,000, while the actual data point is closer to ₹260,000. 
+
+**Why did this happen?** Because we only calculated a simple average ratio (our slope, `m`) without accounting for a baseline starting salary (the intercept, `c`). This creates a rigid line that multiplies our errors as the numbers get bigger. 
+
+This growing gap (known mathematically as the *residual error*) perfectly illustrates why manual calculations aren't efficient for real-world data. In the next step, we will use the **Scikit-Learn** library to automatically calculate the exact slope and intercept that reduces these errors to the absolute minimum!
