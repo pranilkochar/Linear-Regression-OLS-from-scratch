@@ -51,7 +51,7 @@ print('Manual Multiplier (m):', m)
 # Predicting for 50 years of experience
 x = 50
 print('Predicted Salary:', x * m)
-
+```
 **Expected Output:**
 ```text
 Predicted Salay: 772681.2931217102
