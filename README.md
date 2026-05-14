@@ -214,4 +214,14 @@ fig.show()
 OLS Slope (p): 12484.203828623518
 OLS Intercept (c): 12250.666180492248
 ```
+![Actual vs Predicted Salary (Manual)](THIRD_GRAPH.png)
 
+**🔍 Analyzing the Output:**
+
+This graph represents the mathematical peak of our Simple Linear Regression model! Let's break down why this is the true "Line of Best Fit":
+
+* **The Mathematical Perfect Fit:** Unlike our manual guesses in Step 3, the `scikit-learn` algorithm calculated the exact slope (**`12484.20`**) and intercept (**`12250.66`**) needed to minimize the "Sum of Squared Residuals". This is the core mathematical engine behind Ordinary Least Squares (OLS).
+* **Visual Confirmation:** Look at how the orange prediction line perfectly threads the needle through the blue actual data points. It balances the slight over-predictions (where dots are below the line) with the slight under-predictions (where dots are above the line) to create the lowest possible overall error margin.
+* **The Power of ML Libraries:** We achieved this perfect fit with just three simple lines of code (`model = LinearRegression()`, `model.fit(X, y)`, and `model.predict(X)`). 
+
+Now that we have mastered predicting salary using just *one* variable (Work Experience), it's time to level up. In the final step, we will use this exact same logic to predict salary using *multiple* variables at once!
