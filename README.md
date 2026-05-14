@@ -293,7 +293,7 @@ R-squared Accuracy: 0.9994
 
 Predicted Salary for new employee: ₹ 82054.55
 ```
-![Actual vs Predicted Salary (Multiple Features)](THIRD_GRAPH.png)
+![Actual vs Predicted Salary (Multiple Features)](FOURTH_GRAPH.png)
 
 **🔍 Analyzing the Final Graph:**
 
