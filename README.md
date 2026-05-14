@@ -173,3 +173,45 @@ This perfectly illustrates the power of the complete algebraic equation for a li
 **The Catch:** While our line looks great, we still just "guessed" the numbers `p = 12500` and `c = 16000`. Guessing works for simple datasets, but it is impossible for massive datasets with millions of rows. 
 
 In **Step 4**, we will stop guessing and use the **Scikit-Learn** Machine Learning library to mathematically calculate the absolute perfect OLS parameters in a fraction of a second!
+
+
+### Step 4: Machine Learning in Action (Scikit-Learn OLS)
+
+Manual guessing is a great way to understand the underlying math, but what if we had 3 million rows of employee data instead of 30? We can't sit around guessing numbers all day! 
+
+This is where actual Machine Learning comes in. We will use the industry-standard `scikit-learn` library to mathematically calculate the *absolute perfect* slope and intercept in a fraction of a second.
+
+```python
+
+# 1. Prepare the data for OLS
+# Scikit-learn requires the independent variable (X) to be a 2D array
+X = df['work_exp'].values.reshape(-1, 1) 
+y = df['salary'].values
+
+# 2. Create and train (fit) the OLS model
+model = LinearRegression()
+model.fit(X, y)
+
+# 3. Extract the mathematically perfect slope (p) and intercept (c)
+p_ols = model.coef_[0]
+c_ols = model.intercept_
+
+print(f"OLS Slope (p): {p_ols}")
+print(f"OLS Intercept (c): {c_ols}")
+
+# 4. Plotting the optimized Sklearn prediction
+df['predicted_salary'] = (df['work_exp'] * p_ols) + c_ols
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df['work_exp'], y=df['salary'], mode='markers', name='Actual Salary'))
+fig.add_trace(go.Scatter(x=df['work_exp'], y=df['predicted_salary'], mode='lines+markers', name='Predicted Salary (Scikit-Learn)'))
+
+fig.update_layout(title='Actual vs Predicted Salary (Scikit-Learn OLS)', xaxis_title='Work Experience (Years)', yaxis_title='Salary (₹)')
+fig.show()
+```
+**Expected Output:**
+```text
+OLS Slope (p): 12484.203828623518
+OLS Intercept (c): 12250.666180492248
+```
+
