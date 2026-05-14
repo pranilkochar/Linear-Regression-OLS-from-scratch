@@ -157,3 +157,5 @@ fig.update_layout(
 
 # 7. Display the graph
 fig.show()
+```
+![Actual vs Predicted Salary (Manual)](SECOND_GRAPH.png)
