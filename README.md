@@ -214,7 +214,7 @@ fig.show()
 OLS Slope (p): 12484.203828623518
 OLS Intercept (c): 12250.666180492248
 ```
-![Actual vs Predicted Salary (Manual)](THIRD_GRAPH.png)
+![Actual vs Predicted Salary (Using Scikit-learn)](THIRD_GRAPH.png)
 
 **🔍 Analyzing the Output:**
 
@@ -293,4 +293,14 @@ R-squared Accuracy: 0.9994
 
 Predicted Salary for new employee: ₹ 82054.55
 ```
+![Actual vs Predicted Salary (Multiple Features)](THIRD_GRAPH.png)
 
+**🔍 Analyzing the Final Graph:**
+
+Take a close look at the graph above. This is the visual proof of our Multiple Linear Regression model's true power!
+
+* **Near-Perfect Alignment:** Notice how the **Predicted Salary (orange line)** traces over the **Actual Salary (blue line)** almost perfectly. Unlike our simple 1-feature model where a single straight line had to balance between scattered dots, this model tightly hugs every single data point.
+* **The Power of Multiple Features:** Why is the fit so much better? Because we gave the model more context! By feeding it Experience, Age, *and* Rating, the algorithm was able to calculate the nuanced mathematical weights of each factor, rather than relying on just one simple trend.
+* **Visualizing 99.94% Accuracy:** If you look very closely, you can see tiny, barely visible gaps between the blue and orange dots (like at Employee Index 3 or 7). These tiny gaps represent the remaining 0.06% of variance. This graph perfectly illustrates what an R-squared score of 0.9994 looks like in reality.
+
+**Congratulations!** 🎉 You have successfully built, tuned, and visualized Machine Learning models—starting from manual mathematical guesses all the way to a highly accurate Scikit-Learn Multiple Linear Regression model!
