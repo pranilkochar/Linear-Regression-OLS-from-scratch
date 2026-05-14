@@ -34,6 +34,8 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.io as pio
 import plotly.graph_objects as go
+from sklearn.linear_model import LinearRegression
+import numpy as np
 
 # Sample Data
 work_exp = [8, 2, 18, 1, 10, 5, 14, 3, 6, 2, 20, 9, 4, 16, 5, 1, 12, 7, 3, 10,
@@ -62,7 +64,6 @@ Predicted Salay: 772681.2931217102
 Now we will plot our actual data points against the predictions we made using our manual multiplier (`m`). This helps us visually check how well our manual model is performing. 
 
 ```python
-import plotly.graph_objects as go
 
 # 1. Calculate the predicted salary using our manual multiplier (m)
 df['predicted_salary'] = df['work_exp'] * m
