@@ -108,3 +108,53 @@ If you look closely at the graph above, you will notice a clear divergence betwe
 **Why did this happen?** Because we only calculated a simple average ratio (our slope, `m`) without accounting for a baseline starting salary (the intercept, `c`). This creates a rigid line that multiplies our errors as the numbers get bigger. 
 
 This growing gap (known mathematically as the *residual error*) perfectly illustrates why manual calculations aren't efficient for real-world data. In the next step, we will use the **Scikit-Learn** library to automatically calculate the exact slope and intercept that reduces these errors to the absolute minimum!
+
+
+### Step 3: Improving the Model Manually (Adding an Intercept)
+
+In the previous step, we only used a slope (our multiplier, `m`). This forces our prediction line to point straight towards zero, which isn't how real-world salaries work (even with 0 years of experience, a starting salary usually exists). 
+
+To fix this, we need to complete the equation of a straight line: `Salary = (Work Experience * p) + c`.
+* `p` = Our new manual slope 
+* `c` = Our manual intercept (base starting value)
+
+Let's test this by manually guessing `p = 12500` and `c = 16000` to see if our prediction line fits the data better!
+
+```python
+import plotly.graph_objects as go
+
+# 1. Define our manual slope (p) and intercept (c)
+p = 12500
+c = 16000
+
+# 2. Calculate the predicted salary using the full line equation: y = px + c
+df['predicted_salary'] = (df['work_exp'] * p) + c
+
+# 3. Create the Plotly figure
+fig = go.Figure()
+
+# 4. Add the Actual Salary points
+fig.add_trace(go.Scatter(
+    x=df['work_exp'],
+    y=df['salary'],
+    mode='markers',
+    name='Actual Salary'
+))
+
+# 5. Add the Predicted Salary points
+fig.add_trace(go.Scatter(
+    x=df['work_exp'],
+    y=df['predicted_salary'],
+    mode='lines+markers',
+    name='Predicted Salary'
+))
+
+# 6. Add titles and format the layout
+fig.update_layout(
+    title='Actual vs Predicted Salary (Manual Slope & Intercept)',
+    xaxis_title='Work Experience (Years)',
+    yaxis_title='Salary (₹)'
+)
+
+# 7. Display the graph
+fig.show()
