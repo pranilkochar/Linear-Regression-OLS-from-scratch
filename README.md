@@ -159,3 +159,16 @@ fig.update_layout(
 fig.show()
 ```
 ![Actual vs Predicted Salary (Manual)](SECOND_GRAPH.png)
+
+**🔍 Analyzing the Output:**
+
+What a difference an intercept makes! If you compare this graph to the one in Step 2, the improvement is massive:
+
+* **A Perfect Fit:** By adding the intercept (`c = 16000`), our prediction line is no longer forced to point towards zero. It now has a realistic baseline starting salary.
+* **Errors Minimized:** The orange prediction line now beautifully tracks the actual blue data points across the *entire* range. That huge over-prediction gap we saw at the 20-year mark in Step 2 has completely disappeared!
+
+This perfectly illustrates the power of the complete algebraic equation for a line: `y = mx + c`. 
+
+**The Catch:** While our line looks great, we still just "guessed" the numbers `p = 12500` and `c = 16000`. Guessing works for simple datasets, but it is impossible for massive datasets with millions of rows. 
+
+In **Step 4**, we will stop guessing and use the **Scikit-Learn** Machine Learning library to mathematically calculate the absolute perfect OLS parameters in a fraction of a second!
