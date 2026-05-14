@@ -225,3 +225,72 @@ This graph represents the mathematical peak of our Simple Linear Regression mode
 * **The Power of ML Libraries:** We achieved this perfect fit with just three simple lines of code (`model = LinearRegression()`, `model.fit(X, y)`, and `model.predict(X)`). 
 
 Now that we have mastered predicting salary using just *one* variable (Work Experience), it's time to level up. In the final step, we will use this exact same logic to predict salary using *multiple* variables at once!
+
+### Step 5: Leveling Up to Multiple Linear Regression
+
+In the real world, a person's salary isn't just based on how many years they've worked. It also depends on their age, their performance rating, their education, and more. 
+
+When we use more than one independent variable to predict our target outcome, it is called **Multiple Linear Regression**. The true beauty of the `scikit-learn` library is that scaling our model from 1 feature to 3 features requires almost zero changes to our code!
+
+Let's train a final model that predicts Salary based on three distinct features: **Experience, Age, and Rating**.
+
+```python
+# Sample dataset with multiple independent variables
+data = {
+    'experience': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'age': [22, 24, 25, 27, 29, 31, 32, 35, 37, 40],
+    'rating': [2, 3, 3, 4, 4, 5, 5, 6, 6, 7],
+    'salary': [30000, 40000, 50000, 60000, 75000, 85000, 95000, 110000, 120000, 135000]
+}
+
+# Create dataframe
+df = pd.DataFrame(data)
+
+# Independent variables (X) and Dependent variable (y)
+X = df[['experience', 'age', 'rating']]
+y = df['salary']
+
+# Create and train the Multiple Linear Regression model
+model = LinearRegression()
+model.fit(X, y)
+
+# Predict salaries for our existing dataset
+df['predicted_salary'] = model.predict(X)
+
+# Print the calculated mathematical weights
+print("Intercept:", model.intercept_)
+print("\nCoefficients:")
+for feature, coef in zip(X.columns, model.coef_):
+    print(f"{feature}: {coef}")
+
+# Model accuracy (R-squared)
+r2 = model.score(X, y)
+print("\nR-squared Accuracy:", round(r2, 4))
+
+# Predict salary for a brand new employee
+new_employee = [[6, 30, 5]]
+prediction = model.predict(new_employee)
+print("\nPredicted Salary for new employee: ₹", round(prediction[0], 2))
+
+# Plot Actual vs Predicted
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=df.index, y=df['salary'], mode='lines+markers', name='Actual Salary'))
+fig.add_trace(go.Scatter(x=df.index, y=df['predicted_salary'], mode='lines+markers', name='Predicted Salary'))
+
+fig.update_layout(title='Actual vs Predicted Salary (Multiple Features)', xaxis_title='Employee Index', yaxis_title='Salary (₹)')
+fig.show()
+```
+**Expected Output:**
+```text
+Intercept: -35836.36363636362
+
+Coefficients:
+experience: 7163.636363636368
+age: 2818.1818181818153
+rating: -1927.2727272727202
+
+R-squared Accuracy: 0.9994
+
+Predicted Salary for new employee: ₹ 82054.55
+```
+
