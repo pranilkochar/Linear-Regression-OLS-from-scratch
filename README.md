@@ -121,7 +121,6 @@ To fix this, we need to complete the equation of a straight line: `Salary = (Wor
 Let's test this by manually guessing `p = 12500` and `c = 16000` to see if our prediction line fits the data better!
 
 ```python
-import plotly.graph_objects as go
 
 # 1. Define our manual slope (p) and intercept (c)
 p = 12500
